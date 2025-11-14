@@ -1,148 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Контакты — Мини-проект</title>
-  <link rel="stylesheet" href="../style/styles.css">
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Контакты</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../style/styles.css"></head>
 <body>
-  <div class="page-container">
-    <header class="header">
-      <h1>Контакты</h1>
-    </header>
+  <header class="header py-3 mb-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <div class="site-logo">Дружков M.M.</div>
+        <div class="text-muted">ЭФБО-07-24</div>
+      </div>
+      <div class="header__actions">
+        <button class="theme-toggle btn btn-outline-secondary">🌙</button>
+      </div>
+    </div>
+  </header>
 
-    <nav class="nav" aria-label="Навигация">
-      <ul class="nav-list">
-        <li><a href="../index.html">Главная</a></li>
-        <li><a href="news.html">Новости</a></li>
-        <li><a href="goods.html">Товары</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-      </ul>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-4">
+    <div class="container">
+      <a class="navbar-brand site-logo" href="../index.html">Портфолио</a>
+    </div>
+  </nav>
 
-    <main class="content">
-      <section class="contacts-container">
-        <h2 class="section-title">Наши контакты</h2>
+  <main class="container mb-5">
+    <h1>Контакты</h1>
 
-        <article class="contact-info">
-          <h3>Почта</h3>
-          <p>example@mirea.ru</p>
-        </article>
+    <form id="contactForm" class="mb-3">
+      <div class="mb-3"><label class="form-label">Имя</label><input class="form-control" id="name" required></div>
+      <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" id="email" required></div>
+      <div class="mb-3"><label class="form-label">Сообщение</label><textarea class="form-control" id="message" rows="5" required></textarea></div>
+      <button class="btn btn-primary" type="submit">Отправить</button>
+    </form>
 
-        <article class="contact-info">
-          <h3>Телефон</h3>
-          <p>+7 (900) 000-00-00</p>
-        </article>
+    <h3>Другие контакты</h3>
+    <p>📧 student@edu.ru<br>📱 GitHub: polupatsik</p>
+  </main>
 
-        <p>Если хотите написать, нажмите кнопку ниже</p>
+  <footer class="footer mt-5"><div class="container text-center">© 2025 Дружков Михаил</div></footer>
 
-        <button class="contact-button" id="openModal">Связаться с нами</button>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Спасибо! Форма отправлена (демо).');
+      this.reset();
+    });
 
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© 2025 — Контакты</p>
-    </footer>
-
-    <dialog id="contactModal">
-      <form method="dialog" id="feedbackForm">
-        <div class="modal-header"><h2>Форма обратной связи</h2></div>
-        <div class="modal-content">
-          <div class="form-group">
-            <label for="name">Имя <span class="required">*</span></label>
-            <input id="name" name="name" required placeholder="Ваше имя">
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Телефон <span class="required">*</span></label>
-            <input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Почта <span class="required">*</span></label>
-            <input id="email" name="email" type="email" required placeholder="example@mail.ru">
-          </div>
-
-          <div class="form-group">
-            <label for="category">Категория <span class="required">*</span></label>
-            <select id="category" name="category" required>
-              <option value="">-- выберите --</option>
-              <option value="tech">Техподдержка</option>
-              <option value="com">Коммерция</option>
-              <option value="coop">Сотрудничество</option>
-              <option value="other">Другое</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Сообщение <span class="required">*</span></label>
-            <textarea id="message" name="message" required placeholder="Опишите ваш вопрос..."></textarea>
-          </div>
-
-          <div class="modal-actions">
-            <button type="button" class="btn btn-secondary" id="cancelBtn">Отмена</button>
-            <button type="button" class="btn btn-primary" id="sendBtn">Отправить</button>
-          </div>
-        </div>
-      </form>
-    </dialog>
-
-  </div>
-
-<script>
-const modal = document.getElementById('contactModal');
-const openBtn = document.getElementById('openModal');
-const cancelBtn = document.getElementById('cancelBtn');
-const sendBtn = document.getElementById('sendBtn');
-const form = document.getElementById('feedbackForm');
-
-openBtn.addEventListener('click', () => {
-  if (!modal.open) modal.showModal();
-});
-
-// close on cancel
-cancelBtn.addEventListener('click', () => {
-  modal.close();
-  form.reset();
-});
-
-// basic send handler
-sendBtn.addEventListener('click', () => {
-  // simple validation using constraints API
-  const nativeForm = document.getElementById('feedbackForm');
-  const inputs = nativeForm.querySelectorAll('[required]');
-  let ok = true;
-  inputs.forEach(input => {
-    if (!input.checkValidity()) {
-      input.reportValidity();
-      ok = false;
-    }
-  });
-  if (!ok) return;
-
-  // collect data
-  const data = {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
-    email: document.getElementById('email').value,
-    category: document.getElementById('category').value,
-    message: document.getElementById('message').value,
-  };
-
-  console.log('Форма отправлена (демо):', data);
-
-  alert('Спасибо! Ваше сообщение отправлено. :)');
-
-  modal.close();
-  nativeForm.reset();
-});
-
-// close when click outside dialog content
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) modal.close();
-});
-</script>
+    (function(){
+      const root = document.documentElement;
+      const stored = localStorage.getItem('theme');
+      if(stored) root.setAttribute('data-theme', stored);
+      document.querySelectorAll('.theme-toggle').forEach(b => b.textContent = root.getAttribute('data-theme') === 'dark' ? '🌞' : '🌙');
+      document.addEventListener('click', function(e){
+        if(e.target && e.target.classList && e.target.classList.contains('theme-toggle')){
+          const cur = root.getAttribute('data-theme');
+          const next = cur === 'dark' ? '' : 'dark';
+          if(next) root.setAttribute('data-theme', next); else root.removeAttribute('data-theme');
+          localStorage.setItem('theme', next);
+          document.querySelectorAll('.theme-toggle').forEach(b => b.textContent = root.getAttribute('data-theme') === 'dark' ? '🌞' : '🌙');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
