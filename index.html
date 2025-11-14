@@ -1,99 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Мини-проект — Дружков М. М.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Дружков М.М. — Портфолио</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles -->
   <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
-  <div class="page-container">
-    <header class="header">
-      <h1>Мини-проект</h1>
-      <p class="subtitle">Небольшой сайт</p>
-    
-  <div class="header__actions"><button id="themeToggle" class="theme-toggle" aria-label="Переключить тему">🌙</button></div>
-</header>
+  <header class="header py-3 mb-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <div class="site-logo">Дружков M.M.</div>
+        <div class="text-muted">ЭФБО-07-24</div>
+      </div>
+      <div class="header__actions">
+        <button id="themeToggle" class="theme-toggle btn btn-outline-secondary">🌙</button>
+      </div>
+    </div>
+  </header>
 
-    <nav class="nav" aria-label="Главное меню">
-      <ul class="nav-list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="pages/news.html">Новости</a></li>
-        <li><a href="pages/goods.html">Товары</a></li>
-        <li><a href="pages/contacts.html">Контакты</a></li>
-      </ul>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-4">
+    <div class="container">
+      <a class="navbar-brand site-logo" href="index.html">Портфолио</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/projects.html">Проекты</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/diary.html">Дневник</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <main class="content">
-      <article class="profile-header">
-        <h2 class="profile-title">Информация</h2>
-        <img class="profile-photo" src="images/123.png" alt="фото">
-        <h3 class="profile-name">Дружков Михаил Михайлович</h3>
-        <p class="profile-group">группа ЭФБО-07-24</p>
-      </article>
+  <main class="container mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center">
+        <img src="images/avatar.png" class="img-fluid rounded mb-2" alt="Фото" style="max-width:220px;">
+        <a href="assets/resume.pdf" class="btn btn-primary btn-sm">Скачать резюме</a>
+      </div>
+      <div class="col-md-8">
+        <h1>Привет! Я Дружков Михаил</h1>
+        <p class="lead">Студент группы ЭФБО-07-24. Увлекаюсь веб-разработкой, делаю учебные проекты.</p>
 
-      <section class="about-me">
-        <h2>Обо мне</h2>
-        <p>123.</p>
-      </section>
-
-      <section class="skills-container">
-        <h2>Навыки</h2>
-        <div class="skills-grid">
-          <div class="skill-tag">HTML</div>
-          <div class="skill-tag">CSS</div>
-          <div class="skill-tag">JS (базово)</div>
-          <div class="skill-tag">Git / GitHub</div>
+        <h3 class="mt-4">Навыки</h3>
+        <div class="row">
+          <div class="col-sm-6 mb-2">
+            <div class="d-flex justify-content-between"><span>HTML/CSS</span><span>90%</span></div>
+            <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+          </div>
+          <div class="col-sm-6 mb-2">
+            <div class="d-flex justify-content-between"><span>JavaScript</span><span>75%</span></div>
+            <div class="progress"><div class="progress-bar bg-success" style="width:75%"></div></div>
+          </div>
+          <div class="col-sm-6 mb-2">
+            <div class="d-flex justify-content-between"><span>Bootstrap</span><span>85%</span></div>
+            <div class="progress"><div class="progress-bar bg-info" style="width:85%"></div></div>
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section class="experience-section">
-        <h2 class="section-title">Опыт</h2>
-        <div class="experience-grid">
-          <article class="experience-card">
-            <h3 class="experience-title">Проект 1</h3>
-            <p class="experience-desc">123.</p>
-          </article>
-          <article class="experience-card">
-            <h3 class="experience-title">Проект 2</h3>
-            <p class="experience-desc">Учебный проект.</p>
-          </article>
+    <h3 class="mt-5">Проекты</h3>
+    <div class="row g-3 mt-2">
+      <div class="col-md-4">
+        <div class="card card-project h-100">
+          <img src="images/project1.png" class="card-img-top" alt="П1" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h5 class="card-title">Личный сайт</h5>
+            <p class="card-text">Адаптивный макет на HTML/CSS.</p>
+            <a href="pages/projects.html" class="btn btn-outline-primary btn-sm">Подробнее</a>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-project h-100">
+          <img src="images/project2.png" class="card-img-top" alt="П2" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h5 class="card-title">Todo приложение</h5>
+            <p class="card-text">JS, LocalStorage.</p>
+            <a href="pages/projects.html" class="btn btn-outline-primary btn-sm">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-project h-100">
+          <img src="images/project3.png" class="card-img-top" alt="П3" style="height:160px;object-fit:cover">
+          <div class="card-body">
+            <h5 class="card-title">Интернет-магазин</h5>
+            <p class="card-text">Прототип на Bootstrap.</p>
+            <a href="pages/projects.html" class="btn btn-outline-primary btn-sm">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    <footer class="footer">
-      <p>© 2025 — Дружков М.М.</p>
-    </footer>
-  </div>
+  <footer class="footer mt-5 border-top">
+    <div class="container text-center">© 2025 Дружков Михаил — ЭФБО-07-24</div>
+  </footer>
 
-<script>
-/* theme-toggle script */
-(function(){
-  const btn = document.getElementById('themeToggle');
-  const root = document.documentElement;
-  const stored = localStorage.getItem('theme');
-  if(stored) root.setAttribute('data-theme', stored);
-  function updateBtn(){
-    const cur = root.getAttribute('data-theme');
-    if(cur === 'light'){
-      if(btn) btn.textContent = '🌞';
-    } else {
-      if(btn) btn.textContent = '🌙';
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Theme toggle script (shared across pages) -->
+  <script>
+  (function(){
+    const btn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    if(stored) root.setAttribute('data-theme', stored);
+    function updateBtn(){ if(btn) btn.textContent = root.getAttribute('data-theme') === 'dark' ? '🌞' : '🌙'; }
+    updateBtn();
+    if(btn){
+      btn.addEventListener('click', function(){
+        const cur = root.getAttribute('data-theme');
+        const next = cur === 'dark' ? '' : 'dark';
+        if(next) root.setAttribute('data-theme', next); else root.removeAttribute('data-theme');
+        localStorage.setItem('theme', next);
+        updateBtn();
+        // sync other page buttons (if user navigates) — each page sets its own on load
+      });
     }
-  }
-  updateBtn();
-  if(btn){
-    btn.addEventListener('click', function(){
-      const cur = root.getAttribute('data-theme');
-      const next = cur === 'light' ? '' : 'light';
-      if(next) root.setAttribute('data-theme', next); else root.removeAttribute('data-theme');
-      localStorage.setItem('theme', next);
-      updateBtn();
-    });
-  }
-})();
-</script>
-
+  })();
+  </script>
 </body>
 </html>
