@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Проекты — Портфолио</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+  <header class="header py-3 mb-3">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <div class="site-logo">Дружков M.M.</div>
+        <div class="text-muted">ЭФБО-07-24</div>
+      </div>
+      <div class="header__actions">
+        <button class="theme-toggle btn btn-outline-secondary">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-4">
+    <div class="container">
+      <a class="navbar-brand site-logo" href="../index.html">Портфолио</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projects.html">Проекты</a></li>
+          <li class="nav-item"><a class="nav-link" href="diary.html">Дневник</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mb-5">
+    <h1>Проекты</h1>
+    <p class="text-muted">Учебные проекты, реализованные в рамках практических занятий.</p>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card h-100 card-project">
+          <img src="../images/project1.png" class="card-img-top" alt="project1">
+          <div class="card-body">
+            <h5 class="card-title">Личный сайт</h5>
+            <p class="card-text">Адаптивный личный сайт на HTML/CSS.</p>
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projModal" data-title="Личный сайт" data-desc="Адаптивный личный сайт">Подробнее</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 card-project">
+          <img src="../images/project2.png" class="card-img-top" alt="project2">
+          <div class="card-body">
+            <h5 class="card-title">Todo приложение</h5>
+            <p class="card-text">JS + LocalStorage.</p>
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projModal" data-title="Todo" data-desc="Приложение для заметок">Подробнее</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal fade" id="projModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="projModalLabel">Проект</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p id="projDesc"></p></div></div></div></div>
+
+  <footer class="footer mt-5"><div class="container text-center">© 2025 Дружков Михаил</div></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var projModal = document.getElementById('projModal');
+    projModal.addEventListener('show.bs.modal', function (event) {
+      var button = event.relatedTarget;
+      document.getElementById('projModalLabel').textContent = button.getAttribute('data-title');
+      document.getElementById('projDesc').textContent = button.getAttribute('data-desc');
+    });
+
+    // theme toggle sync
+    (function(){
+      const root = document.documentElement;
+      const stored = localStorage.getItem('theme');
+      if(stored) root.setAttribute('data-theme', stored);
+      document.querySelectorAll('.theme-toggle').forEach(b => b.textContent = root.getAttribute('data-theme') === 'dark' ? '🌞' : '🌙');
+      document.addEventListener('click', function(e){
+        if(e.target && e.target.classList && e.target.classList.contains('theme-toggle')){
+          const cur = root.getAttribute('data-theme');
+          const next = cur === 'dark' ? '' : 'dark';
+          if(next) root.setAttribute('data-theme', next); else root.removeAttribute('data-theme');
+          localStorage.setItem('theme', next);
+          document.querySelectorAll('.theme-toggle').forEach(b => b.textContent = root.getAttribute('data-theme') === 'dark' ? '🌞' : '🌙');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
